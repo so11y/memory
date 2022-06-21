@@ -111,6 +111,16 @@ class MagicString {
   append(content: string) {
     this.outro += content;
   }
+  appendLeft(index: number, content: string) {
+    if (!this.byteStart[index]) {
+      splitChunk(this, index);
+    }
+    if (!this.byteEnd[index]) {
+      splitChunk(this, index);
+    }
+    const chunk = this.byteStart[index] || this.byteEnd[index];
+    chunk.intro += content;
+  }
   remove(start: number, end: number) {
     if (!this.byteStart[start]) splitChunk(this, start);
     if (!this.byteEnd[end]) splitChunk(this, end);
