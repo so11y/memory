@@ -39,6 +39,11 @@ class Chunk {
     this.content = content;
     this.edited = true;
   }
+  remove() {
+    this.content = "";
+    this.intro = "";
+    this.outro = "";
+  }
 }
 
 const splitChunk = (m: MagicString, index: number) => {
@@ -107,17 +112,12 @@ class MagicString {
     this.outro += content;
   }
   remove(start: number, end: number) {
-    if (!this.byteStart[start]) {
-      splitChunk(this, start);
-    }
-    if (!this.byteEnd[end]) {
-      splitChunk(this, end);
-    }
-    [this.byteStart[start], this.byteEnd[end]].forEach((chunk) => {
-      chunk.content = "";
-      chunk.intro = "";
-      chunk.outro = "";
-    });
+    if (!this.byteStart[start]) splitChunk(this, start);
+    if (!this.byteEnd[end]) splitChunk(this, end);
+
+    [this.byteStart[start], this.byteEnd[end]].forEach((chunk) =>
+      chunk.remove()
+    );
   }
 }
 
