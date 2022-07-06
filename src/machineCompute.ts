@@ -291,5 +291,5 @@ const runComputeExpression = (text: string) => {
 const result = runComputeExpression(`(1 + (1 + 2))`)
 console.log(result);
 
-//3个
-//4个
+//5个
+//6个
