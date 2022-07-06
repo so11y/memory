@@ -286,10 +286,10 @@ const traverse = (nodes: MachineContext["stack"]) => {
 const runComputeExpression = (text: string) => {
     const tokens = tokenizer(text);
     const nodes = machine(tokens);
-    console.log(nodes);
     return traverse(nodes);
 }
 const result = runComputeExpression(`(1 + (1 + 2))`)
 console.log(result);
 
 //谢谢
+//客气
