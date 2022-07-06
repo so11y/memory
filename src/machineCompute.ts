@@ -291,5 +291,4 @@ const runComputeExpression = (text: string) => {
 const result = runComputeExpression(`(1 + (1 + 2))`)
 console.log(result);
 
-//谢谢
-//客气
+//1个
